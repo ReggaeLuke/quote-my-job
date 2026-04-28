@@ -493,6 +493,12 @@ useSeoMeta({
 }
 
 /* ─── Responsive tweaks ─────────────────────────────── */
+@media (min-width: 481px) {
+  .hero__glow--2 {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .hero__stats {
     gap: 1.25rem;

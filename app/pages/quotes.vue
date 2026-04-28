@@ -33,7 +33,8 @@ const fetchQuotes = async () => {
     quotes.value = snapshot.docs.map(
       (doc) => ({ id: doc.id, ...doc.data() }) as Quote,
     );
-  } catch {
+  } catch (err) {
+    console.error('Firestore error:', err);
     error.value = 'Failed to load quotes.';
   } finally {
     loading.value = false;
