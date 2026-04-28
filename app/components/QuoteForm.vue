@@ -323,10 +323,10 @@ onMounted(() => {
   max-width: 560px;
   max-height: 90svh;
   overflow-y: auto;
-  background: #111120;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 20px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15);
   scrollbar-width: thin;
 }
 
@@ -335,10 +335,10 @@ onMounted(() => {
   top: 1rem;
   float: right;
   margin: 1rem 1rem 0 0;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #64748b;
   cursor: pointer;
   width: 36px;
   height: 36px;
@@ -352,8 +352,8 @@ onMounted(() => {
 }
 
 .modal__close:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
 /* ── Body ────────────────────────────────────────── */
@@ -370,9 +370,9 @@ onMounted(() => {
   display: inline-block;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #a78bfa;
-  background: rgba(124, 58, 237, 0.12);
-  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: #0f5148;
+  background: #f0fdfa;
+  border: 1px solid #0d9488;
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
   margin-bottom: 0.75rem;
@@ -381,14 +381,14 @@ onMounted(() => {
 .modal__title {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #fff;
+  color: #0f172a;
   letter-spacing: -0.02em;
   margin: 0 0 0.5rem;
 }
 
 .modal__subtitle {
   font-size: 0.93rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: #64748b;
   line-height: 1.6;
   margin: 0;
 }
@@ -410,18 +410,18 @@ onMounted(() => {
 .form__label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  color: #334155;
 }
 
 .form__required {
-  color: #a78bfa;
+  color: #0d9488;
 }
 
 .form__input {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  color: #fff;
+  color: #0f172a;
   font-size: 0.95rem;
   padding: 0.7rem 1rem;
   width: 100%;
@@ -433,12 +433,13 @@ onMounted(() => {
 }
 
 .form__input::placeholder {
-  color: rgba(255, 255, 255, 0.25);
+  color: #94a3b8;
 }
 
 .form__input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+  background: #fff;
 }
 
 .form__input--error {
@@ -462,7 +463,7 @@ onMounted(() => {
 
 .form__footnote {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: #94a3b8;
   text-align: center;
   margin-top: 0.85rem;
   line-height: 1.5;
@@ -487,14 +488,15 @@ onMounted(() => {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  background: #0d9488;
   color: #fff;
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.35);
 }
 
 .btn--primary:hover:not(:disabled) {
+  background: #0f766e;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.55);
+  box-shadow: 0 8px 28px rgba(13, 148, 136, 0.5);
 }
 
 .btn--primary:disabled {
@@ -547,19 +549,19 @@ onMounted(() => {
 .modal__success-title {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #fff;
+  color: #0f172a;
   margin: 0;
 }
 
 .modal__success-text {
   font-size: 0.98rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #64748b;
   line-height: 1.65;
   margin: 0 0 0.5rem;
 }
 
 .modal__success-text strong {
-  color: #fff;
+  color: #0f172a;
 }
 
 /* ── Transitions ─────────────────────────────────── */

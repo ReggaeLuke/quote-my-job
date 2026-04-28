@@ -177,7 +177,7 @@ useSeoMeta({
 .hero__glow--1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #7c3aed, transparent);
+  background: radial-gradient(circle, #bfdbfe, transparent);
   top: -150px;
   left: -100px;
 }
@@ -185,7 +185,7 @@ useSeoMeta({
 .hero__glow--2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, #4f46e5, transparent);
+  background: radial-gradient(circle, #99f6e4, transparent);
   bottom: -100px;
   right: -80px;
 }
@@ -194,8 +194,8 @@ useSeoMeta({
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(29, 78, 216, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -215,10 +215,10 @@ useSeoMeta({
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 1rem;
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.35);
+  background: #f0fdfa;
+  border: 1px solid #0d9488;
   border-radius: 999px;
-  color: #c4b5fd;
+  color: #0f5148;
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -226,7 +226,7 @@ useSeoMeta({
 .hero__badge-dot {
   width: 7px;
   height: 7px;
-  background: #a78bfa;
+  background: #0d9488;
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
@@ -246,12 +246,12 @@ useSeoMeta({
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #0f172a;
   margin: 0;
 }
 
 .hero__title-highlight {
-  background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -260,7 +260,7 @@ useSeoMeta({
 .hero__subtitle {
   max-width: 580px;
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(255, 255, 255, 0.6);
+  color: #475569;
   line-height: 1.7;
   margin: 0;
 }
@@ -277,8 +277,8 @@ useSeoMeta({
   align-items: center;
   gap: 2rem;
   padding: 1.5rem 2.5rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   flex-wrap: wrap;
   justify-content: center;
@@ -294,19 +294,19 @@ useSeoMeta({
 .hero__stat-value {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #fff;
+  color: #1d4ed8;
   line-height: 1;
 }
 
 .hero__stat-label {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #64748b;
 }
 
 .hero__stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #e2e8f0;
 }
 
 /* ─── Buttons ───────────────────────────────────────── */
@@ -327,25 +327,26 @@ useSeoMeta({
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  background: #0d9488;
   color: #fff;
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.35);
 }
 
 .btn--primary:hover {
+  background: #0f766e;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.55);
+  box-shadow: 0 8px 28px rgba(13, 148, 136, 0.5);
 }
 
 .btn--secondary {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #fff;
+  color: #1d4ed8;
+  border: 1.5px solid #1d4ed8;
 }
 
 .btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: #dbeafe;
+  color: #1e3a8a;
 }
 
 .btn--lg {
@@ -378,14 +379,14 @@ useSeoMeta({
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #a78bfa;
+  color: #1d4ed8;
   margin: 0 0 0.75rem;
 }
 
 .section-title {
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 800;
-  color: #fff;
+  color: #0f172a;
   margin: 0 0 3rem;
   letter-spacing: -0.02em;
 }
@@ -397,14 +398,15 @@ useSeoMeta({
 }
 
 .step-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   padding: 2rem 1.75rem;
   text-align: left;
   transition:
     border-color 0.3s,
-    transform 0.3s;
+    transform 0.3s,
+    box-shadow 0.3s;
   position: relative;
   overflow: hidden;
 }
@@ -413,14 +415,15 @@ useSeoMeta({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.06), transparent);
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.04), transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
 
 .step-card:hover {
-  border-color: rgba(124, 58, 237, 0.4);
+  border-color: #1d4ed8;
   transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(29, 78, 216, 0.1);
 }
 
 .step-card:hover::before {
@@ -430,7 +433,7 @@ useSeoMeta({
 .step-card__number {
   font-size: 0.75rem;
   font-weight: 700;
-  color: rgba(167, 139, 250, 0.5);
+  color: #93c5fd;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
 }
@@ -444,13 +447,13 @@ useSeoMeta({
 .step-card__title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+  color: #0f172a;
   margin: 0 0 0.6rem;
 }
 
 .step-card__desc {
   font-size: 0.93rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: #64748b;
   line-height: 1.65;
   margin: 0;
 }
@@ -465,30 +468,26 @@ useSeoMeta({
   margin: 0 auto;
   text-align: center;
   padding: 4rem 2.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(124, 58, 237, 0.2),
-    rgba(79, 70, 229, 0.2)
-  );
-  border: 1px solid rgba(124, 58, 237, 0.35);
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
   border-radius: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  box-shadow: 0 8px 40px rgba(29, 78, 216, 0.25);
 }
 
 .cta-banner__title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
-  color: #fff;
+  color: #ffffff;
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .cta-banner__subtitle {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75);
   margin: 0 0 0.5rem;
   max-width: 460px;
 }
