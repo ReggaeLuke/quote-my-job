@@ -1,5 +1,6 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
@@ -16,10 +17,12 @@ export default defineNuxtPlugin(() => {
   // Prevent re-initialising on hot reload
   const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
   const firestore = getFirestore(app);
+  const auth = getAuth(app);
 
   return {
     provide: {
       firestore,
+      auth,
     },
   };
 });
