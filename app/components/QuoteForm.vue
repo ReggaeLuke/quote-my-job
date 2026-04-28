@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { trades } from '~/data/trades';
+import { statuses } from '~/data/statuses';
+
 const { isOpen, close } = useQuoteModal();
 
 const form = reactive({
   name: '',
   mobile: '',
-  email: '',
+  category: '',
   jobDescription: '',
 });
 
 const errors = reactive({
   name: '',
   mobile: '',
-  email: '',
+  category: '',
   jobDescription: '',
 });
 
@@ -32,13 +36,8 @@ const validate = () => {
     : 'Please enter your mobile number.';
   if (errors.mobile) valid = false;
 
-  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  errors.email = form.email.trim()
-    ? emailRe.test(form.email.trim())
-      ? ''
-      : 'Please enter a valid email address.'
-    : 'Please enter your email address.';
-  if (errors.email) valid = false;
+  errors.category = form.category ? '' : 'Please select a trade category.';
+  if (errors.category) valid = false;
 
   errors.jobDescription = form.jobDescription.trim()
     ? form.jobDescription.trim().length >= 10
@@ -50,13 +49,24 @@ const validate = () => {
   return valid;
 };
 
+const { $firestore } = useNuxtApp();
+
 const handleSubmit = async () => {
   if (!validate()) return;
   submitting.value = true;
-  // Simulate network request
-  await new Promise((resolve) => setTimeout(resolve, 1200));
-  submitting.value = false;
-  submitted.value = true;
+  try {
+    await addDoc(collection($firestore as any, 'quotes'), {
+      name: form.name.trim(),
+      mobile: form.mobile.trim(),
+      category: form.category,
+      jobDescription: form.jobDescription.trim(),
+      status: statuses[0],
+      createdAt: serverTimestamp(),
+    });
+    submitted.value = true;
+  } finally {
+    submitting.value = false;
+  }
 };
 
 const handleClose = () => {
@@ -68,13 +78,13 @@ const handleClose = () => {
     Object.assign(form, {
       name: '',
       mobile: '',
-      email: '',
+      category: '',
       jobDescription: '',
     });
     Object.assign(errors, {
       name: '',
       mobile: '',
-      email: '',
+      category: '',
       jobDescription: '',
     });
   }, 300);
@@ -214,32 +224,38 @@ onMounted(() => {
                     </div>
                   </div>
 
-                  <!-- Email -->
+                  <!-- Category -->
                   <div class="form__field">
-                    <label class="form__label" for="quote-email">
-                      Email Address
+                    <label class="form__label" for="quote-category">
+                      Trade Category
                       <span class="form__required" aria-hidden="true">*</span>
                     </label>
-                    <input
-                      id="quote-email"
-                      v-model="form.email"
-                      class="form__input"
-                      :class="{ 'form__input--error': errors.email }"
-                      type="email"
-                      autocomplete="email"
-                      placeholder="jane@example.com"
+                    <select
+                      id="quote-category"
+                      v-model="form.category"
+                      class="form__input form__select"
+                      :class="{ 'form__input--error': errors.category }"
                       :aria-describedby="
-                        errors.email ? 'email-error' : undefined
+                        errors.category ? 'category-error' : undefined
                       "
-                      :aria-invalid="!!errors.email"
-                    />
+                      :aria-invalid="!!errors.category"
+                    >
+                      <option value="" disabled>Select a trade…</option>
+                      <option
+                        v-for="trade in trades"
+                        :key="trade"
+                        :value="trade"
+                      >
+                        {{ trade }}
+                      </option>
+                    </select>
                     <p
-                      v-if="errors.email"
-                      id="email-error"
+                      v-if="errors.category"
+                      id="category-error"
                       class="form__error"
                       role="alert"
                     >
-                      {{ errors.email }}
+                      {{ errors.category }}
                     </p>
                   </div>
 
@@ -453,6 +469,16 @@ onMounted(() => {
 .form__textarea {
   resize: vertical;
   min-height: 100px;
+}
+
+.form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
 }
 
 .form__error {

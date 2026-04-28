@@ -2,7 +2,7 @@
 const { open: openQuoteModal } = useQuoteModal();
 
 useSeoMeta({
-  title: 'Quote My Job – Free Trades Quotes',
+  title: 'Quote Any Job – Free Trades Quotes',
   description:
     "Need a decorator, plasterer, tiler or plumber? Submit your job and we'll send a trusted tradesperson to give you a free, no-obligation quote.",
 });

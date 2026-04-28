@@ -25,11 +25,11 @@ const navLinks = [{ label: 'Home', to: '/' }];
       <NuxtLink
         to="/"
         class="navbar__logo"
-        aria-label="Quote My Job - Home"
+        aria-label="Quote Any Job - Home"
         @click="closeMenu"
       >
         <span class="navbar__logo-icon" aria-hidden="true">⚡</span>
-        <span class="navbar__logo-text">Quote My Job</span>
+        <span class="navbar__logo-text">Quote Any Job</span>
       </NuxtLink>
 
       <!-- Desktop Nav -->
