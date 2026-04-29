@@ -306,9 +306,9 @@ onMounted(() => {
 
 .fields__row {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 100px 1fr;
   gap: 0.5rem 1rem;
-  padding: 0.9rem 1.25rem;
+  padding: 0.9rem 1rem;
   border-bottom: 1px solid #f1f5f9;
 }
 
