@@ -1,5 +1,37 @@
 <script setup lang="ts">
+import { reviews } from '~/data/reviews';
+
 const { open: openQuoteModal } = useQuoteModal();
+
+const visibleCount = 3;
+const currentIndex = ref(0);
+let autoplayTimer: ReturnType<typeof setInterval> | null = null;
+
+const visibleReviews = computed(() => {
+  return Array.from({ length: visibleCount }, (_, i) => {
+    return reviews[(currentIndex.value + i) % reviews.length];
+  });
+});
+
+const next = () => {
+  currentIndex.value = (currentIndex.value + visibleCount) % reviews.length;
+};
+
+const prev = () => {
+  currentIndex.value =
+    (currentIndex.value - visibleCount + reviews.length) % reviews.length;
+};
+
+const startAutoplay = () => {
+  autoplayTimer = setInterval(next, 4000);
+};
+
+const stopAutoplay = () => {
+  if (autoplayTimer) clearInterval(autoplayTimer);
+};
+
+onMounted(startAutoplay);
+onUnmounted(stopAutoplay);
 
 useSeoMeta({
   title: 'Quote Any Job – Free Trades Quotes',
@@ -124,6 +156,67 @@ useSeoMeta({
               proceed.
             </p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Carousel -->
+    <section class="reviews" aria-labelledby="reviews-heading">
+      <div class="reviews__container">
+        <p class="section-label">What our customers say</p>
+        <h2 id="reviews-heading" class="section-title">
+          Trusted by homeowners across the UK
+        </h2>
+
+        <div
+          class="reviews__track"
+          @mouseenter="stopAutoplay"
+          @mouseleave="startAutoplay"
+        >
+          <button
+            class="reviews__arrow reviews__arrow--prev"
+            aria-label="Previous reviews"
+            @click="prev"
+          >
+            &#8592;
+          </button>
+
+          <Transition name="slide" mode="out-in">
+            <div :key="currentIndex" class="reviews__grid">
+              <article
+                v-for="(review, i) in visibleReviews"
+                :key="i"
+                class="review-card"
+              >
+                <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
+                <p class="review-card__text">"{{ review?.text }}"</p>
+                <span class="review-card__name">— {{ review?.name }}</span>
+              </article>
+            </div>
+          </Transition>
+
+          <button
+            class="reviews__arrow reviews__arrow--next"
+            aria-label="Next reviews"
+            @click="next"
+          >
+            &#8594;
+          </button>
+        </div>
+
+        <div class="reviews__dots" role="list" aria-label="Review pages">
+          <button
+            v-for="(_, i) in Array.from({
+              length: reviews.length / visibleCount,
+            })"
+            :key="i"
+            class="reviews__dot"
+            :class="{
+              'reviews__dot--active': currentIndex === i * visibleCount,
+            }"
+            :aria-label="`Go to page ${i + 1}`"
+            @click="currentIndex = i * visibleCount"
+          />
         </div>
       </div>
     </section>
@@ -456,6 +549,141 @@ useSeoMeta({
   color: #64748b;
   line-height: 1.65;
   margin: 0;
+}
+
+/* ─── Reviews ───────────────────────────────────────── */
+.reviews {
+  padding: 6rem 1.5rem;
+  background: #f8fafc;
+}
+
+.reviews__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.review-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.review-card__stars {
+  color: #f59e0b;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.review-card__text {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+.review-card__name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.reviews__arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #64748b;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.reviews__arrow:hover {
+  background: #0d9488;
+  color: #fff;
+  border-color: #0d9488;
+}
+
+.reviews__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.reviews__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  padding: 0;
+}
+
+.reviews__dot--active {
+  background: #0d9488;
+  transform: scale(1.3);
+}
+
+/* slide transition */
+.slide-enter-active,
+.slide-leave-active {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+@media (max-width: 768px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews__grid article:nth-child(n + 2) {
+    display: none;
+  }
 }
 
 /* ─── CTA Banner ────────────────────────────────────── */

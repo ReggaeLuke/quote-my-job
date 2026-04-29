@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const isMenuOpen = ref(false);
 const { open: openQuoteModal } = useQuoteModal();
+const { logout, user } = useAuth();
+const route = useRoute();
+const router = useRouter();
+
+const isQuotesRoute = computed(() => route.path.startsWith('/quotes'));
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -13,6 +18,11 @@ const closeMenu = () => {
 const handleQuoteCta = () => {
   closeMenu();
   openQuoteModal();
+};
+
+const handleLogout = async () => {
+  await logout();
+  router.push('/login');
 };
 
 const navLinks = [{ label: 'Home', to: '/' }];
@@ -34,16 +44,26 @@ const navLinks = [{ label: 'Home', to: '/' }];
 
       <!-- Desktop Nav -->
       <nav class="navbar__links" aria-label="Main navigation">
-        <NuxtLink
-          v-for="link in navLinks"
-          :key="link.to"
-          :to="link.to"
-          class="navbar__link"
-          active-class="navbar__link--active"
-        >
-          {{ link.label }}
-        </NuxtLink>
-        <button class="navbar__cta" @click="handleQuoteCta">Get a Quote</button>
+        <template v-if="isQuotesRoute">
+          <span class="navbar__email">{{ user?.email }}</span>
+          <button class="navbar__signout" @click="handleLogout">
+            Sign out
+          </button>
+        </template>
+        <template v-else>
+          <NuxtLink
+            v-for="link in navLinks"
+            :key="link.to"
+            :to="link.to"
+            class="navbar__link"
+            active-class="navbar__link--active"
+          >
+            {{ link.label }}
+          </NuxtLink>
+          <button class="navbar__cta" @click="handleQuoteCta">
+            Get a Quote
+          </button>
+        </template>
       </nav>
 
       <!-- Hamburger Button -->
@@ -137,6 +157,33 @@ const navLinks = [{ label: 'Home', to: '/' }];
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.navbar__email {
+  font-size: 0.85rem;
+  color: #64748b;
+  padding: 0 0.5rem;
+}
+
+.navbar__signout {
+  padding: 0.5rem 1.25rem;
+  background: #0d9488;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  box-shadow: 0 2px 12px rgba(13, 148, 136, 0.3);
+}
+
+.navbar__signout:hover {
+  background: #0f766e;
+  transform: translateY(-1px);
 }
 
 /* Desktop links */

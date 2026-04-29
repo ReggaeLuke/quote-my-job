@@ -22,6 +22,11 @@ service cloud.firestore {
         && request.resource.data.jobDescription is string
         && request.resource.data.jobDescription.size() >= 10
         && request.resource.data.status == 'Pending';
+
+      // Authenticated users can update only the status field
+      allow update: if request.auth != null
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status in ['Pending', 'Contacted', 'Cancelled', 'Closed'];
     }
   }
 }
