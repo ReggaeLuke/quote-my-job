@@ -38,7 +38,12 @@ const navLinks = [{ label: 'Home', to: '/' }];
         aria-label="Quote Any Job - Home"
         @click="closeMenu"
       >
-        <span class="navbar__logo-icon" aria-hidden="true">⚡</span>
+        <img
+          src="/QAJ_Tick.png"
+          alt=""
+          class="navbar__logo-icon"
+          aria-hidden="true"
+        />
         <span class="navbar__logo-text">Quote Any Job</span>
       </NuxtLink>
 
@@ -148,8 +153,10 @@ const navLinks = [{ label: 'Home', to: '/' }];
 }
 
 .navbar__logo-icon {
-  font-size: 1.4rem;
-  line-height: 1;
+  height: 60px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
 .navbar__logo-text {
