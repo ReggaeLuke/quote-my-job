@@ -24,8 +24,6 @@ const handleLogout = async () => {
   await logout();
   router.push('/login');
 };
-
-const navLinks = [{ label: 'Home', to: '/' }];
 </script>
 
 <template>
@@ -44,7 +42,6 @@ const navLinks = [{ label: 'Home', to: '/' }];
           class="navbar__logo-icon"
           aria-hidden="true"
         />
-        <span class="navbar__logo-text">Quote Any Job</span>
       </NuxtLink>
 
       <!-- Desktop Nav -->
@@ -56,15 +53,6 @@ const navLinks = [{ label: 'Home', to: '/' }];
           </button>
         </template>
         <template v-else>
-          <NuxtLink
-            v-for="link in navLinks"
-            :key="link.to"
-            :to="link.to"
-            class="navbar__link"
-            active-class="navbar__link--active"
-          >
-            {{ link.label }}
-          </NuxtLink>
           <button class="navbar__cta" @click="handleQuoteCta">
             Get a Quote
           </button>
@@ -94,16 +82,6 @@ const navLinks = [{ label: 'Home', to: '/' }];
         class="navbar__mobile"
         aria-label="Mobile navigation"
       >
-        <NuxtLink
-          v-for="link in navLinks"
-          :key="link.to"
-          :to="link.to"
-          class="navbar__mobile-link"
-          active-class="navbar__mobile-link--active"
-          @click="closeMenu"
-        >
-          {{ link.label }}
-        </NuxtLink>
         <button class="navbar__mobile-cta" @click="handleQuoteCta">
           Get a Quote
         </button>
@@ -153,7 +131,7 @@ const navLinks = [{ label: 'Home', to: '/' }];
 }
 
 .navbar__logo-icon {
-  height: 60px;
+  height: 80px;
   width: auto;
   display: block;
   flex-shrink: 0;

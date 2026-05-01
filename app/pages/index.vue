@@ -51,6 +51,8 @@ useSeoMeta({
       </div>
 
       <div class="hero__container">
+        <p class="hero__brand">Quote Any Job</p>
+
         <div class="hero__badge" aria-label="Free service">
           <span class="hero__badge-dot" aria-hidden="true" />
           Free quotes, no obligation
@@ -301,6 +303,14 @@ useSeoMeta({
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+}
+
+.hero__brand {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  color: #0d9488;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
 .hero__badge {
