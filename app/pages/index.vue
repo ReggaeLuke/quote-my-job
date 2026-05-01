@@ -43,41 +43,67 @@ useSeoMeta({
 <template>
   <main>
     <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__glow hero__glow--1" />
-        <div class="hero__glow hero__glow--2" />
-        <div class="hero__grid" />
+    <section
+      class="relative flex min-h-svh items-center overflow-hidden px-6 pt-[100px] pb-16"
+      aria-labelledby="hero-heading"
+    >
+      <!-- Background -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="hero-glow-1 absolute rounded-full opacity-25 blur-[80px]" />
+        <div
+          class="hero-glow-2 absolute rounded-full opacity-25 blur-[80px] sm:hidden"
+        />
+        <div class="hero-grid absolute inset-0" />
       </div>
 
-      <div class="hero__container">
-        <p class="hero__brand">Quote Any Job</p>
+      <div
+        class="relative mx-auto flex w-full max-w-[800px] flex-col items-center gap-6 text-center"
+      >
+        <!-- Brand -->
+        <p
+          class="hero-brand m-0 font-extrabold tracking-[-0.02em] text-[#0d9488]"
+        >
+          Quote Any Job
+        </p>
 
-        <div class="hero__badge" aria-label="Free service">
-          <span class="hero__badge-dot" aria-hidden="true" />
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-[#0d9488] bg-[#f0fdfa] px-4 py-[0.4rem] text-[0.85rem] font-medium text-[#0f5148]"
+          aria-label="Free service"
+        >
+          <span
+            class="badge-dot h-[7px] w-[7px] rounded-full bg-[#0d9488]"
+            aria-hidden="true"
+          />
           Free quotes, no obligation
         </div>
 
-        <h1 id="hero-heading" class="hero__title">
+        <!-- Heading -->
+        <h1
+          id="hero-heading"
+          class="hero-title m-0 font-extrabold leading-[1.1] tracking-[-0.03em] text-slate-900"
+        >
           Need a tradesperson?<br />
-          <span class="hero__title-highlight">Get a free quote today</span>
+          <span class="hero-title-highlight">Get a free quote today</span>
         </h1>
 
-        <p class="hero__subtitle">
+        <!-- Subtitle -->
+        <p class="hero-subtitle m-0 max-w-[580px] leading-[1.7] text-slate-500">
           Whether it's decorating, plastering, tiling, plumbing, or anything in
           between — tell us about your job and we'll send a trusted local
           tradesperson out to give you a fair, no-obligation quote.
         </p>
 
-        <div class="hero__actions">
+        <!-- Actions -->
+        <div class="flex flex-wrap justify-center gap-3">
           <button
-            class="btn btn--primary"
+            class="btn-primary inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-[10px] border-none px-6 py-[0.7rem] font-semibold text-[0.95rem] text-white transition-all duration-200"
             aria-label="Get a free quote for your job"
             @click="openQuoteModal"
           >
             Get a Free Quote
             <svg
-              class="btn__icon"
+              class="btn-icon flex-shrink-0 transition-transform duration-200"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -92,67 +118,144 @@ useSeoMeta({
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
-          <a href="#how-it-works" class="btn btn--secondary"
+          <a
+            href="#how-it-works"
+            class="inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-[10px] border border-[#1d4ed8] bg-white px-6 py-[0.7rem] font-semibold text-[0.95rem] text-[#1d4ed8] no-underline transition-all duration-200 hover:bg-[#dbeafe] hover:text-[#1e3a8a]"
             >See how it works</a
           >
         </div>
 
-        <div class="hero__stats" role="list" aria-label="Key statistics">
-          <div class="hero__stat" role="listitem">
-            <span class="hero__stat-value">500+</span>
-            <span class="hero__stat-label">Trusted tradespeople</span>
+        <!-- Stats -->
+        <div
+          class="flex flex-wrap items-center justify-content-center gap-8 rounded-2xl border border-slate-200 bg-slate-50 px-10 py-6 max-[480px]:gap-5 max-[480px]:px-6"
+          role="list"
+          aria-label="Key statistics"
+        >
+          <div class="flex flex-col items-center gap-[0.2rem]" role="listitem">
+            <span class="text-[1.75rem] font-bold leading-none text-[#1d4ed8]"
+              >500+</span
+            >
+            <span class="text-[0.8rem] text-slate-500"
+              >Trusted tradespeople</span
+            >
           </div>
-          <div class="hero__stat-divider" aria-hidden="true" />
-          <div class="hero__stat" role="listitem">
-            <span class="hero__stat-value">100%</span>
-            <span class="hero__stat-label">Free &amp; no obligation</span>
+          <div
+            class="stat-divider h-10 w-px bg-slate-200 max-[480px]:hidden"
+            aria-hidden="true"
+          />
+          <div class="flex flex-col items-center gap-[0.2rem]" role="listitem">
+            <span class="text-[1.75rem] font-bold leading-none text-[#1d4ed8]"
+              >100%</span
+            >
+            <span class="text-[0.8rem] text-slate-500"
+              >Free &amp; no obligation</span
+            >
           </div>
-          <div class="hero__stat-divider" aria-hidden="true" />
-          <div class="hero__stat" role="listitem">
-            <span class="hero__stat-value">24 hr</span>
-            <span class="hero__stat-label">Response time</span>
+          <div
+            class="stat-divider h-10 w-px bg-slate-200 max-[480px]:hidden"
+            aria-hidden="true"
+          />
+          <div class="flex flex-col items-center gap-[0.2rem]" role="listitem">
+            <span class="text-[1.75rem] font-bold leading-none text-[#1d4ed8]"
+              >24 hr</span
+            >
+            <span class="text-[0.8rem] text-slate-500">Response time</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- How It Works -->
-    <section id="how-it-works" class="steps" aria-labelledby="steps-heading">
-      <div class="steps__container">
-        <h2 id="steps-heading" class="section-label">How it works</h2>
-        <p class="section-title">Your quote in three easy steps</p>
+    <section
+      id="how-it-works"
+      class="px-6 py-24"
+      aria-labelledby="steps-heading"
+    >
+      <div class="mx-auto max-w-[1100px] text-center">
+        <h2
+          id="steps-heading"
+          class="m-0 mb-3 text-[0.8rem] font-bold uppercase tracking-[0.15em] text-[#1d4ed8]"
+        >
+          How it works
+        </h2>
+        <p
+          class="section-title m-0 mb-12 font-extrabold tracking-[-0.02em] text-slate-900"
+        >
+          Your quote in three easy steps
+        </p>
 
-        <div class="steps__grid">
-          <article class="step-card" aria-labelledby="step1-title">
-            <div class="step-card__number" aria-hidden="true">01</div>
-            <div class="step-card__icon" aria-hidden="true">📋</div>
-            <h3 id="step1-title" class="step-card__title">Describe Your Job</h3>
-            <p class="step-card__desc">
+        <div class="steps-grid grid gap-6">
+          <article
+            class="step-card relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#1d4ed8] hover:shadow-[0_8px_32px_rgba(29,78,216,0.1)]"
+            aria-labelledby="step1-title"
+          >
+            <div
+              class="mb-4 text-[0.75rem] font-bold tracking-[0.1em] text-[#93c5fd]"
+              aria-hidden="true"
+            >
+              01
+            </div>
+            <div class="mb-4 text-[2rem] leading-none" aria-hidden="true">
+              📋
+            </div>
+            <h3
+              id="step1-title"
+              class="m-0 mb-[0.6rem] text-[1.15rem] font-bold text-slate-900"
+            >
+              Describe Your Job
+            </h3>
+            <p class="m-0 text-[0.93rem] leading-[1.65] text-slate-500">
               Fill in your name, contact details, and a brief description of the
               work you need done — decorating, plastering, tiling, plumbing, and
               more.
             </p>
           </article>
 
-          <article class="step-card" aria-labelledby="step2-title">
-            <div class="step-card__number" aria-hidden="true">02</div>
-            <div class="step-card__icon" aria-hidden="true">🔨</div>
-            <h3 id="step2-title" class="step-card__title">
+          <article
+            class="step-card relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#1d4ed8] hover:shadow-[0_8px_32px_rgba(29,78,216,0.1)]"
+            aria-labelledby="step2-title"
+          >
+            <div
+              class="mb-4 text-[0.75rem] font-bold tracking-[0.1em] text-[#93c5fd]"
+              aria-hidden="true"
+            >
+              02
+            </div>
+            <div class="mb-4 text-[2rem] leading-none" aria-hidden="true">
+              🔨
+            </div>
+            <h3
+              id="step2-title"
+              class="m-0 mb-[0.6rem] text-[1.15rem] font-bold text-slate-900"
+            >
               We Find Your Tradesperson
             </h3>
-            <p class="step-card__desc">
+            <p class="m-0 text-[0.93rem] leading-[1.65] text-slate-500">
               We match your job to a trusted, vetted local tradesperson and
               arrange for them to visit at a time that suits you.
             </p>
           </article>
 
-          <article class="step-card" aria-labelledby="step3-title">
-            <div class="step-card__number" aria-hidden="true">03</div>
-            <div class="step-card__icon" aria-hidden="true">✅</div>
-            <h3 id="step3-title" class="step-card__title">
+          <article
+            class="step-card relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#1d4ed8] hover:shadow-[0_8px_32px_rgba(29,78,216,0.1)]"
+            aria-labelledby="step3-title"
+          >
+            <div
+              class="mb-4 text-[0.75rem] font-bold tracking-[0.1em] text-[#93c5fd]"
+              aria-hidden="true"
+            >
+              03
+            </div>
+            <div class="mb-4 text-[2rem] leading-none" aria-hidden="true">
+              ✅
+            </div>
+            <h3
+              id="step3-title"
+              class="m-0 mb-[0.6rem] text-[1.15rem] font-bold text-slate-900"
+            >
               Get Your Free Quote
             </h3>
-            <p class="step-card__desc">
+            <p class="m-0 text-[0.93rem] leading-[1.65] text-slate-500">
               Your tradesperson visits, scopes the job, and provides a clear,
               itemised quote — completely free and with no obligation to
               proceed.
@@ -163,20 +266,27 @@ useSeoMeta({
     </section>
 
     <!-- Reviews Carousel -->
-    <section class="reviews" aria-labelledby="reviews-heading">
-      <div class="reviews__container">
-        <p class="section-label">What our customers say</p>
-        <h2 id="reviews-heading" class="section-title">
+    <section class="bg-slate-50 px-6 py-24" aria-labelledby="reviews-heading">
+      <div class="mx-auto max-w-[1100px] text-center">
+        <p
+          class="m-0 mb-3 text-[0.8rem] font-bold uppercase tracking-[0.15em] text-[#1d4ed8]"
+        >
+          What our customers say
+        </p>
+        <h2
+          id="reviews-heading"
+          class="section-title m-0 mb-10 font-extrabold tracking-[-0.02em] text-slate-900"
+        >
           Trusted by homeowners across the UK
         </h2>
 
         <div
-          class="reviews__track"
+          class="relative flex items-center gap-2"
           @mouseenter="stopAutoplay"
           @mouseleave="startAutoplay"
         >
           <button
-            class="reviews__arrow reviews__arrow--prev"
+            class="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-content-center rounded-full border border-slate-200 bg-white text-base text-slate-500 transition-all duration-200 hover:border-[#0d9488] hover:bg-[#0d9488] hover:text-white"
             aria-label="Previous reviews"
             @click="prev"
           >
@@ -184,21 +294,35 @@ useSeoMeta({
           </button>
 
           <Transition name="slide" mode="out-in">
-            <div :key="currentIndex" class="reviews__grid">
+            <div
+              :key="currentIndex"
+              class="reviews-grid min-w-0 flex-1 grid gap-6"
+            >
               <article
                 v-for="(review, i) in visibleReviews"
                 :key="i"
-                class="review-card"
+                class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-7 text-left"
               >
-                <div class="review-card__stars" aria-label="5 stars">★★★★★</div>
-                <p class="review-card__text">"{{ review?.text }}"</p>
-                <span class="review-card__name">— {{ review?.name }}</span>
+                <div
+                  class="text-[1.1rem] tracking-[0.05em] text-amber-400"
+                  aria-label="5 stars"
+                >
+                  ★★★★★
+                </div>
+                <p
+                  class="m-0 flex-1 text-[0.92rem] leading-[1.65] text-slate-500"
+                >
+                  "{{ review?.text }}"
+                </p>
+                <span class="text-[0.85rem] font-semibold text-slate-900"
+                  >— {{ review?.name }}</span
+                >
               </article>
             </div>
           </Transition>
 
           <button
-            class="reviews__arrow reviews__arrow--next"
+            class="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-content-center rounded-full border border-slate-200 bg-white text-base text-slate-500 transition-all duration-200 hover:border-[#0d9488] hover:bg-[#0d9488] hover:text-white"
             aria-label="Next reviews"
             @click="next"
           >
@@ -206,16 +330,22 @@ useSeoMeta({
           </button>
         </div>
 
-        <div class="reviews__dots" role="list" aria-label="Review pages">
+        <div
+          class="mt-6 flex justify-center gap-2"
+          role="list"
+          aria-label="Review pages"
+        >
           <button
             v-for="(_, i) in Array.from({
               length: reviews.length / visibleCount,
             })"
             :key="i"
-            class="reviews__dot"
-            :class="{
-              'reviews__dot--active': currentIndex === i * visibleCount,
-            }"
+            class="h-2 w-2 cursor-pointer rounded-full border-none p-0 transition-all duration-200"
+            :class="
+              currentIndex === i * visibleCount
+                ? 'scale-[1.3] bg-[#0d9488]'
+                : 'bg-slate-300'
+            "
             :aria-label="`Go to page ${i + 1}`"
             @click="currentIndex = i * visibleCount"
           />
@@ -224,17 +354,22 @@ useSeoMeta({
     </section>
 
     <!-- CTA Banner -->
-    <section class="cta-banner" aria-labelledby="cta-heading">
-      <div class="cta-banner__container">
-        <h2 id="cta-heading" class="cta-banner__title">
+    <section class="px-6 py-20" aria-labelledby="cta-heading">
+      <div
+        class="mx-auto flex max-w-[700px] flex-col items-center gap-4 rounded-3xl bg-gradient-to-br from-[#1d4ed8] to-[#1e3a8a] px-10 py-16 text-center shadow-[0_8px_40px_rgba(29,78,216,0.25)] max-[480px]:px-6 max-[480px]:py-10"
+      >
+        <h2
+          id="cta-heading"
+          class="cta-title m-0 font-extrabold tracking-[-0.02em] text-white"
+        >
           Ready to get your job quoted?
         </h2>
-        <p class="cta-banner__subtitle">
+        <p class="m-0 mb-2 max-w-[460px] text-base text-white/75">
           It takes less than a minute. Tell us what you need done and we'll take
           care of the rest.
         </p>
         <button
-          class="btn btn--primary btn--lg"
+          class="btn-primary inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-[10px] border-none px-8 py-[0.9rem] text-base font-semibold text-white transition-all duration-200"
           aria-label="Request a free quote now"
           @click="openQuoteModal"
         >
@@ -246,30 +381,36 @@ useSeoMeta({
 </template>
 
 <style scoped>
-/* ─── Hero ─────────────────────────────────────────── */
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding: 100px 1.5rem 4rem;
+/* clamp fluid sizes — not expressible as standard Tailwind utilities */
+.hero-brand {
+  font-size: clamp(3rem, 8vw, 6rem);
 }
 
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-.hero__glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.25;
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
-.hero__glow--1 {
+.hero-title-highlight {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.cta-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+/* Decorative glows */
+.hero-glow-1 {
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, #bfdbfe, transparent);
@@ -277,7 +418,7 @@ useSeoMeta({
   left: -100px;
 }
 
-.hero__glow--2 {
+.hero-glow-2 {
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, #99f6e4, transparent);
@@ -285,52 +426,51 @@ useSeoMeta({
   right: -80px;
 }
 
-.hero__grid {
-  position: absolute;
-  inset: 0;
+.hero-grid {
   background-image:
     linear-gradient(rgba(29, 78, 216, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(29, 78, 216, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-.hero__container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+/* Step card pseudo-element hover overlay */
+.step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.hero__brand {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 800;
-  color: #0d9488;
-  letter-spacing: -0.02em;
-  margin: 0;
+.step-card:hover::before {
+  opacity: 1;
 }
 
-.hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 1rem;
-  background: #f0fdfa;
-  border: 1px solid #0d9488;
-  border-radius: 999px;
-  color: #0f5148;
-  font-size: 0.85rem;
-  font-weight: 500;
+/* Steps auto-fit grid */
+.steps-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.hero__badge-dot {
-  width: 7px;
-  height: 7px;
+/* Primary button */
+.btn-primary {
   background: #0d9488;
-  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.35);
+  font-family: inherit;
+}
+
+.btn-primary:hover {
+  background: #0f766e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(13, 148, 136, 0.5);
+}
+
+.btn-primary:hover .btn-icon {
+  transform: translateX(3px);
+}
+
+/* Badge dot pulse animation */
+.badge-dot {
   animation: pulse 2s infinite;
 }
 
@@ -344,331 +484,22 @@ useSeoMeta({
   }
 }
 
-.hero__title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: #0f172a;
-  margin: 0;
-}
-
-.hero__title-highlight {
-  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero__subtitle {
-  max-width: 580px;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #475569;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-}
-
-.hero__stats {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 1.5rem 2.5rem;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.hero__stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.hero__stat-value {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1d4ed8;
-  line-height: 1;
-}
-
-.hero__stat-label {
-  font-size: 0.8rem;
-  color: #64748b;
-}
-
-.hero__stat-divider {
-  width: 1px;
-  height: 40px;
-  background: #e2e8f0;
-}
-
-/* ─── Buttons ───────────────────────────────────────── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  font-family: inherit;
-  border: none;
-  border-radius: 10px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.btn--primary {
-  background: #0d9488;
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.35);
-}
-
-.btn--primary:hover {
-  background: #0f766e;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(13, 148, 136, 0.5);
-}
-
-.btn--secondary {
-  background: #fff;
-  color: #1d4ed8;
-  border: 1.5px solid #1d4ed8;
-}
-
-.btn--secondary:hover {
-  background: #dbeafe;
-  color: #1e3a8a;
-}
-
-.btn--lg {
-  padding: 0.9rem 2rem;
-  font-size: 1rem;
-}
-
-.btn__icon {
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-
-.btn--primary:hover .btn__icon {
-  transform: translateX(3px);
-}
-
-/* ─── Steps ─────────────────────────────────────────── */
-.steps {
-  padding: 6rem 1.5rem;
-}
-
-.steps__container {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.section-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #1d4ed8;
-  margin: 0 0 0.75rem;
-}
-
-.section-title {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 3rem;
-  letter-spacing: -0.02em;
-}
-
-.steps__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.step-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 2rem 1.75rem;
-  text-align: left;
-  transition:
-    border-color 0.3s,
-    transform 0.3s,
-    box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.step-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(29, 78, 216, 0.04), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.step-card:hover {
-  border-color: #1d4ed8;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(29, 78, 216, 0.1);
-}
-
-.step-card:hover::before {
-  opacity: 1;
-}
-
-.step-card__number {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #93c5fd;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-}
-
-.step-card__icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  line-height: 1;
-}
-
-.step-card__title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.6rem;
-}
-
-.step-card__desc {
-  font-size: 0.93rem;
-  color: #64748b;
-  line-height: 1.65;
-  margin: 0;
-}
-
-/* ─── Reviews ───────────────────────────────────────── */
-.reviews {
-  padding: 6rem 1.5rem;
-  background: #f8fafc;
-}
-
-.reviews__container {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.reviews__track {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.reviews__grid {
-  display: grid;
+/* Reviews grid responsive */
+.reviews-grid {
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  flex: 1;
-  min-width: 0;
 }
 
-.review-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 1.75rem;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-grid article:nth-child(n + 2) {
+    display: none;
+  }
 }
 
-.review-card__stars {
-  color: #f59e0b;
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
-}
-
-.review-card__text {
-  font-size: 0.92rem;
-  color: #475569;
-  line-height: 1.65;
-  margin: 0;
-  flex: 1;
-}
-
-.review-card__name {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.reviews__arrow {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  color: #64748b;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-.reviews__arrow:hover {
-  background: #0d9488;
-  color: #fff;
-  border-color: #0d9488;
-}
-
-.reviews__dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.reviews__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: #cbd5e1;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.2s;
-  padding: 0;
-}
-
-.reviews__dot--active {
-  background: #0d9488;
-  transform: scale(1.3);
-}
-
-/* slide transition */
+/* Slide carousel transition */
 .slide-enter-active,
 .slide-leave-active {
   transition:
@@ -684,75 +515,5 @@ useSeoMeta({
 .slide-leave-to {
   opacity: 0;
   transform: translateX(-30px);
-}
-
-@media (max-width: 768px) {
-  .reviews__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .reviews__grid article:nth-child(n + 2) {
-    display: none;
-  }
-}
-
-/* ─── CTA Banner ────────────────────────────────────── */
-.cta-banner {
-  padding: 5rem 1.5rem;
-}
-
-.cta-banner__container {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 4rem 2.5rem;
-  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  box-shadow: 0 8px 40px rgba(29, 78, 216, 0.25);
-}
-
-.cta-banner__title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.cta-banner__subtitle {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0 0 0.5rem;
-  max-width: 460px;
-}
-
-/* ─── Responsive tweaks ─────────────────────────────── */
-@media (min-width: 481px) {
-  .hero__glow--2 {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__stats {
-    gap: 1.25rem;
-    padding: 1.25rem 1.5rem;
-  }
-
-  .hero__stat-divider {
-    display: none;
-  }
-
-  .hero__stats {
-    gap: 1.5rem;
-  }
-
-  .cta-banner__container {
-    padding: 2.5rem 1.5rem;
-  }
 }
 </style>

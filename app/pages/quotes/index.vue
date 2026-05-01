@@ -65,18 +65,29 @@ onMounted(fetchQuotes);
 </script>
 
 <template>
-  <div class="admin">
-    <main class="admin__main">
-      <div v-if="loading" class="admin__status">Loading…</div>
-      <div v-else-if="error" class="admin__status admin__status--error">
+  <div class="min-h-svh bg-slate-50 pt-[68px]">
+    <main class="p-8">
+      <div
+        v-if="loading"
+        class="px-4 py-12 text-center text-[0.95rem] text-slate-500"
+      >
+        Loading…
+      </div>
+      <div
+        v-else-if="error"
+        class="px-4 py-12 text-center text-[0.95rem] text-red-400"
+      >
         {{ error }}
       </div>
-      <div v-else-if="quotes.length === 0" class="admin__status">
+      <div
+        v-else-if="quotes.length === 0"
+        class="px-4 py-12 text-center text-[0.95rem] text-slate-500"
+      >
         No quote requests yet.
       </div>
 
       <template v-else>
-        <div class="filter-bar">
+        <div class="mb-5 flex flex-wrap gap-2">
           <button
             class="filter-pill"
             :class="{ 'filter-pill--active': activeFilter === null }"
@@ -98,34 +109,63 @@ onMounted(fetchQuotes);
           </button>
         </div>
 
-        <div v-if="filteredQuotes.length === 0" class="admin__status">
+        <div
+          v-if="filteredQuotes.length === 0"
+          class="px-4 py-12 text-center text-[0.95rem] text-slate-500"
+        >
           No quotes with status "{{ activeFilter }}".
         </div>
 
-        <div v-else class="table-wrap">
-          <table class="quotes-table">
+        <div
+          v-else
+          class="overflow-x-auto rounded-xl border border-slate-200 bg-white"
+        >
+          <table class="w-full border-collapse text-[0.9rem]">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Name</th>
-                <th>Status</th>
+                <th
+                  class="border-b border-slate-200 bg-slate-50 px-4 py-[0.85rem] text-left text-[0.78rem] font-semibold uppercase tracking-[0.05em] whitespace-nowrap text-slate-500"
+                >
+                  Date
+                </th>
+                <th
+                  class="border-b border-slate-200 bg-slate-50 px-4 py-[0.85rem] text-left text-[0.78rem] font-semibold uppercase tracking-[0.05em] whitespace-nowrap text-slate-500"
+                >
+                  Name
+                </th>
+                <th
+                  class="border-b border-slate-200 bg-slate-50 px-4 py-[0.85rem] text-left text-[0.78rem] font-semibold uppercase tracking-[0.05em] whitespace-nowrap text-slate-500"
+                >
+                  Status
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr
                 v-for="quote in filteredQuotes"
                 :key="quote.id"
-                class="quotes-table__row"
+                class="group cursor-pointer"
                 @click="router.push(`/quotes/${quote.id}`)"
               >
-                <td class="td--date">{{ formatDate(quote.createdAt) }}</td>
-                <td>{{ quote.name }}</td>
-                <td>
+                <td
+                  class="border-b border-slate-100 px-4 py-[0.85rem] align-top whitespace-nowrap text-[0.85rem] text-slate-500 group-hover:bg-slate-100"
+                >
+                  {{ formatDate(quote.createdAt) }}
+                </td>
+                <td
+                  class="border-b border-slate-100 px-4 py-[0.85rem] align-top text-slate-900 group-hover:bg-slate-100"
+                >
+                  {{ quote.name }}
+                </td>
+                <td
+                  class="border-b border-slate-100 px-4 py-[0.85rem] align-top group-hover:bg-slate-100"
+                >
                   <span
                     class="badge"
                     :class="`badge--${quote.status.toLowerCase()}`"
-                    >{{ quote.status }}</span
                   >
+                    {{ quote.status }}
+                  </span>
                 </td>
               </tr>
             </tbody>
@@ -137,113 +177,7 @@ onMounted(fetchQuotes);
 </template>
 
 <style scoped>
-.admin {
-  min-height: 100svh;
-  background: #f8fafc;
-  font-family: inherit;
-  padding-top: 68px;
-}
-
-.admin__main {
-  padding: 2rem;
-}
-
-.admin__status {
-  text-align: center;
-  color: #64748b;
-  padding: 3rem 1rem;
-  font-size: 0.95rem;
-}
-
-.admin__status--error {
-  color: #f87171;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-}
-
-.quotes-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.quotes-table th {
-  text-align: left;
-  padding: 0.85rem 1rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #64748b;
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  white-space: nowrap;
-}
-
-.quotes-table td {
-  padding: 0.85rem 1rem;
-  color: #0f172a;
-  border-bottom: 1px solid #f1f5f9;
-  vertical-align: top;
-}
-
-.quotes-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.quotes-table__row {
-  cursor: pointer;
-}
-
-.quotes-table__row:hover td {
-  background: #f1f5f9;
-}
-
-.td--date {
-  white-space: nowrap;
-  color: #64748b;
-  font-size: 0.85rem;
-}
-
-.badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.badge--pending {
-  background: #fef9c3;
-  color: #854d0e;
-}
-.badge--contacted {
-  background: #dbeafe;
-  color: #1e40af;
-}
-.badge--cancelled {
-  background: #fee2e2;
-  color: #991b1b;
-}
-.badge--closed {
-  background: #dcfce7;
-  color: #166534;
-}
-
-/* ── Filter bar ─────────────────────────────────────── */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-}
-
+/* ── Filter pills ───────────────────────────────────── */
 .filter-pill {
   padding: 0.35rem 0.9rem;
   font-size: 0.8rem;
@@ -268,20 +202,43 @@ onMounted(fetchQuotes);
   color: #fff !important;
 }
 
-.filter-pill--pending {
-  border-color: #0d9488;
-  color: #0d9488;
-}
-.filter-pill--contacted {
-  border-color: #0d9488;
-  color: #0d9488;
-}
-.filter-pill--cancelled {
-  border-color: #0d9488;
-  color: #0d9488;
-}
+.filter-pill--pending,
+.filter-pill--contacted,
+.filter-pill--cancelled,
 .filter-pill--closed {
   border-color: #0d9488;
   color: #0d9488;
+}
+
+/* ── Table last row ─────────────────────────────────── */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Badges ─────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge--pending {
+  background: #fef9c3;
+  color: #854d0e;
+}
+.badge--contacted {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.badge--cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.badge--closed {
+  background: #dcfce7;
+  color: #166534;
 }
 </style>
