@@ -127,7 +127,7 @@ useSeoMeta({
 
         <!-- Stats -->
         <div
-          class="flex flex-wrap items-center justify-content-center gap-8 rounded-2xl border border-slate-200 bg-slate-50 px-10 py-6 max-[480px]:gap-5 max-[480px]:px-6"
+          class="flex flex-wrap items-center justify-center gap-8 rounded-2xl border border-slate-200 bg-slate-50 px-10 py-6 max-[480px]:gap-5 max-[480px]:px-6"
           role="list"
           aria-label="Key statistics"
         >
@@ -286,7 +286,7 @@ useSeoMeta({
           @mouseleave="startAutoplay"
         >
           <button
-            class="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-content-center rounded-full border border-slate-200 bg-white text-base text-slate-500 transition-all duration-200 hover:border-[#0d9488] hover:bg-[#0d9488] hover:text-white"
+            class="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-base text-slate-500 transition-all duration-200 hover:border-[#0d9488] hover:bg-[#0d9488] hover:text-white"
             aria-label="Previous reviews"
             @click="prev"
           >
@@ -322,7 +322,7 @@ useSeoMeta({
           </Transition>
 
           <button
-            class="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-content-center rounded-full border border-slate-200 bg-white text-base text-slate-500 transition-all duration-200 hover:border-[#0d9488] hover:bg-[#0d9488] hover:text-white"
+            class="flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-base text-slate-500 transition-all duration-200 hover:border-[#0d9488] hover:bg-[#0d9488] hover:text-white"
             aria-label="Next reviews"
             @click="next"
           >
