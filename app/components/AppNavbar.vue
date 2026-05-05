@@ -42,7 +42,7 @@ const handleLogout = async () => {
         @click="closeMenu"
       >
         <img
-          src="/QAJ_Tick.png"
+          src="/logo.png"
           alt=""
           class="block h-[80px] w-auto flex-shrink-0"
           aria-hidden="true"
